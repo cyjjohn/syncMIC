@@ -54,7 +54,7 @@ public class ReadyJob implements Job {
                     new File(wavDir),
                     FileFilterUtils.and(
                             EmptyFileFilter.NOT_EMPTY, // 为空判断
-                            new SuffixFileFilter(".1.wav")),
+                            new SuffixFileFilter(".0.wav")),
                     FalseFileFilter.FALSE);
             if (fileCollection.isEmpty()) {
                 logger.info("!!!Nothing here!!!");
