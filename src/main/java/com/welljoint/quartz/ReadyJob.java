@@ -45,7 +45,7 @@ public class ReadyJob implements Job {
             String wavPath = config.get("templateDir") + config.get("wavName");
             String charset = config.get("encode");
             int batchSize = Integer.parseInt(config.get("batchSize"));
-            String userId = config.get("user_id");
+//            String userId = config.get("user_id");
             String internalUser = config.get("internal_user_id");
             String switchId = config.get("switch_id");
 //            String user_rta_state = config.get("user_rta_state");
@@ -142,9 +142,9 @@ public class ReadyJob implements Job {
 
                             updateXmlValue(doc, rootElement, xmlPath, charset, "//InitiatorUser", internalUser);
                             updateXmlValue(doc, rootElement, xmlPath, charset, "//SwitchID", switchId);
-                            updateXmlValue(doc, rootElement, xmlPath, charset, "//Participant//Recording[RecordingSideType='Out']/../../UserID", userId);
-                            updateXmlValue(doc, rootElement, xmlPath, charset, "//Recording[RecordingSideType='Out']/../Recording/Storage/ArchivePath", fileFullName);
-                            updateXmlValue(doc, rootElement, xmlPath, charset, "//Recording[RecordingSideType='In']/../Recording/Storage/ArchivePath", fileFullName.replace("0.wav", "1.wav"));
+//                            updateXmlValue(doc, rootElement, xmlPath, charset, "//Participant//Recording[RecordingSideType='Out']/../../UserID", userId);
+                            updateXmlValue(doc, rootElement, xmlPath, charset, "//Participant[UserID=0]/Recordings/Recording/Storage/ArchivePath", fileFullName);
+                            updateXmlValue(doc, rootElement, xmlPath, charset, "//Participant[UserID!=0]/Recordings/Recording/Storage/ArchivePath", fileFullName.replace("0.wav", "1.wav"));
                             updateXmlValue(doc,rootElement,xmlPath,charset,"//BusinessData[Name='SYSTEMID']/Value",wavNameStr[0]);
                             updateXmlValue(doc,rootElement,xmlPath,charset,"//BusinessData[Name='siAuthenticationLevel']/Value",wavNameStr[1]);
 
